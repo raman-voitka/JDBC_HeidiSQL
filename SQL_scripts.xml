@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+CREATE TABLE users (
+    userId INTEGER NOT NULL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    address VARCHAR(255)
+);
+CREATE TABLE accounts (
+    accountId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    userId INTEGER(10) NOT NULL,
+    balance DECIMAL(15) NOT NULL,
+    currency VARCHAR(10) NOT NULL,
+    FOREIGN KEY(userId) REFERENCES users(userId)
+);
+CREATE TABLE transactions (
+    transactionId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    accountId INTEGER(10) NOT NULL,
+    amount DECIMAL(15) NOT NULL,
+    FOREIGN KEY(accountId) REFERENCES accounts(accountId)
+);
+</project>
